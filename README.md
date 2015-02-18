@@ -1,6 +1,6 @@
 # VBackup
 
-A simple program to generate the backup SQL file.
+A simple Ruby CLI to generate the backup SQL file.
 
 ## Installation
 
