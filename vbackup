@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'commander/import'
+
+program :version, '0.0.1'
+program :description, 'generate a backup SQL file'
+
+`mysql.server start`
+
+command :generate do |c|
+  c.syntax = 'vbackup generate [options]'
+  c.description = 'generate a backup file with options'
+  c.option '-u STRING', String, 'Pass user name'
+  c.option '-d STRING', String, 'Pass database name'
+  c.action do |args, options|
+    user = options.u
+    db = options.d
+    backup_file = db + '_' + Time.now.strftime('%Y%m%d')
+
+    # Generate backup file
+    mysqldump = "mysqldump -u #{user} -p " + "#{db}"
+
+    `#{mysqldump} > #{backup_file}.sql`
+    `gzip #{backup_file}.sql`
+    say "Successfully generated"
+  end
+end
+

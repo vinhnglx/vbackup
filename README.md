@@ -1,9 +1,15 @@
-## How to run
+# VBackup
 
-Using a password on the command line interface can be insecure.
+A simple program to generate the backup SQL file.
 
-Please follow the command: `ruby db-backup.rb -u user_name -p database_name`.
+## Installation
 
-By the way, to setup our backups, we need to setup the cronjob to run daily.
+We need install commander gem, first: `gem install commamder`
+
+## Quick Start
+
+Please follow the command: `./vbackup -u user_name -p database_name`.
+
+## Note
 
 **This command only run for mysql database.**
